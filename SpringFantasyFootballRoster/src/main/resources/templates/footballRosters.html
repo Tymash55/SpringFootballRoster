@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="ISO-8859-1">
+<title>View Full Fantasy Football Roster(Spring Boot)</title>
+</head>
+<body>
+	<h3>Spring Boot Fantasy Football Roster</h3>
+	<form>
+    <table>
+        <tr>
+            <th class="id">Id</th>
+            <th class="name">Player Name</th>
+            <th class="age">Age</th>
+            <th class="position">Position</th>
+            <th class="team">Team</th>
+            <th class="action" th:colspan="2">Action</th>
+        </tr>
+        <tr th:each="roster : ${rosters}">
+            <th th:class="id"     th:text="${roster.id}"></th>
+            <th th:class="name"   th:text="${roster.name}"></th>
+            <th th:class="age" th:text="${roster.age}"></th>
+            <th th:class="position"   th:text="${roster.position}"></th>
+            <th th:class="team"   th:text="${roster.team}"></th>
+            <th th:class="action"><a th:href="@{/edit/{id}(id=${roster.id})}">Edit</a></th>
+            <th th:class="action"><a th:href="@{/delete/{id}(id=${roster.id})}">Delete</a></th>
+        </tr>
+    </table>
+</form>
+<br/>
+<a href="../inputPlayer">Add a new Player</a>
+</body>
+</html>
